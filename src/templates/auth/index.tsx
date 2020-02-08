@@ -26,7 +26,7 @@ const AuthTemplate: React.FC = () => {
       >
         <Router>
           <Switch>
-            <Route path={`${path}/login`} exact component={LoginView} />
+            <Route path={[path, `${path}/login`]} exact component={LoginView} />
             <Route path={`${path}/register`} exact component={RegisterView} />
           </Switch>
         </Router>
