@@ -9,6 +9,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
+import GoogleLogin from 'react-google-login';
 import style from './style';
 
 const LoginView: React.FC = () => {
@@ -22,7 +23,7 @@ const LoginView: React.FC = () => {
       m={1}
       p={1}
       className={classes.card}
-      style={{ maxWidth: '300px', height: '350px', borderRadius: '7px' }}
+      style={{ maxWidth: '300px', height: '400px', borderRadius: '7px' }}
     >
       <Grid container spacing={3} direction="column">
         <Grid
@@ -66,9 +67,25 @@ const LoginView: React.FC = () => {
           </FormControl>
         </Grid>
         <Grid item xs={12}>
-          <Button fullWidth className={classes.loginButton} variant="contained" size="large">
-                  Login
-          </Button>
+          <Grid container direction="column">
+            <Grid item xs={12}>
+              <Button fullWidth className={classes.loginButton} variant="contained" size="large">
+                      Login
+              </Button>
+            </Grid>
+            <Grid item xs={12}>
+              <GoogleLogin
+                clientId="278658391651-hapsi6ngjpk8etkogt79jls5s49jebte.apps.googleusercontent.com"
+                buttonText="Login"
+                onSuccess={(response) => console.log('onSuccess', response)}
+                onFailure={(response) => console.log('onFailure', response)}
+                style={{ width: '100%' }}
+                redirectUri="http://www.fullauthtest.com:3000/callack"
+              >
+                <span> Login with Google</span>
+              </GoogleLogin>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Box>
